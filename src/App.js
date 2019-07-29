@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Typography from '@material-ui/core/Typography';
+import Venues from './components/Venues';
 
-function App() {
+const App = () => {
   return (
-    <Typography variant="h4" component="h1" gutterBottom>
-      Find my venue
-    </Typography>
+    <Fragment>
+      <Typography variant="h4" component="h1" gutterBottom>
+        Find my venue
+      </Typography>
+      <div>
+        <Venues />
+    </div>
+    </Fragment>
   );
 }
 
