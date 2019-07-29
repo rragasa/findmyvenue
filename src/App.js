@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
   return (
-  <p> This is my App</p>
+  <p>Find My Venue</p>
   );
 }
 
