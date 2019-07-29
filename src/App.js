@@ -1,8 +1,11 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 function App() {
   return (
-  <p>Find My Venue</p>
+    <Typography variant="h4" component="h1" gutterBottom>
+      Find my venue
+    </Typography>
   );
 }
 
