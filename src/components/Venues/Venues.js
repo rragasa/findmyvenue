@@ -36,8 +36,13 @@ class Search extends Component {
   }
 
   render() {
+    const recommendedVenueList = this.state.venues.map(item => {
+      const { id, name } = item.venue;
+      return <li key={id}>{name}</li>
+    });
+
     return (
-      <p></p>
+      <div>{recommendedVenueList}</div>
     );
   }
 }

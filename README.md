@@ -72,3 +72,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 1. https://reactjs.org/docs/create-a-new-react-app.html
 2. https://blog.usejournal.com/testing-with-jest-and-enzyme-in-react-part-1-162ce7466128
+3. https://medium.com/backticks-tildes/setting-up-a-redux-project-with-create-react-app-e363ab2329b8

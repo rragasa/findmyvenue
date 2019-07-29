@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Venues from './components/Venues';
 
@@ -15,4 +16,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default connect()(App);
