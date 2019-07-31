@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { searchVenue } from '../../utils/api/searchVenue';
+import { getVenues } from '../../utils/actions/venueActions';
 import {
   apiVersion as v,
   client_id,
@@ -30,16 +31,10 @@ class Search extends Component {
       client_secret,
       near: this.state.location,
     };
-    searchVenue(payload).then(async response => {
-      this.setState({
-        venues: response.data.response.venues
-      });
-      console.log('search', response.data.response);
-    })
-    .catch(error => {
-      console.log('ERROR: ' + error);
-    });
+
+    this.props.getVenues(payload);
   }
+
   render() {
     return (
       <form role="search">
@@ -59,4 +54,13 @@ class Search extends Component {
   }
 }
 
-export default Search;
+const mapStateToProps = state => ({
+  ...state
+})
+
+const mapDispatchToProps = dispatch => ({
+  getVenues: (payload) => dispatch(getVenues(payload))
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);;
