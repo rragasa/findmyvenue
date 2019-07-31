@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import appReducer from './appReducer';
+import venueReducer from './venueReducer';
 export default combineReducers({
-  appReducer
+ venueReducer
 });

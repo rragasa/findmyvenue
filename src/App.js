@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
-import Venues from './components/Venues';
+import Search from './components/Search';
 
 const App = () => {
   return (
@@ -10,10 +9,10 @@ const App = () => {
         Find my venue
       </Typography>
       <div>
-        <Venues />
+        <Search />
     </div>
     </Fragment>
   );
 }
 
-export default connect()(App);
+export default App;
