@@ -1,66 +1,40 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { getVenues } from '../../utils/actions/venueActions';
-import {
-  apiVersion as v,
-  client_id,
-  client_secret,
-} from '../../config.json';
-
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      location: '',
-    }
-
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {location: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event){
-    this.setState({location: event.target.value});
+  handleSubmit(event) {
+    const { onSubmit } = this.props;
+    event.preventDefault();
+    onSubmit(this.state.location);
   }
 
-  handleSubmit(event){
-    const payload = {
-      v,
-      client_id,
-      client_secret,
-      near: this.state.location,
-    };
-
-    this.props.getVenues(payload);
+  handleChange(event) {
+    this.setState({ location: event.target.value });
   }
 
   render() {
+    const {location} = this.state;
     return (
-      <form role="search">
+      <form onSubmit={this.handleSubmit}>
         <TextField
-          id="venue-search"
-          label="Enter a location"
+          id="venueSearch"
+          label="Search for venues"
           type="text"
           margin="normal"
-          value={this.state.location}
-          onChange={this.handleChange}
+          value={location}
+          onChange={e => this.handleChange(e)}
         />
-        <Button variant="contained" onClick={this.handleSubmit}>
-          Submit
-        </Button>
+        <Button variant="contained" onClick={this.handleSubmit}>Submit</Button>
       </form>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  ...state
-})
-
-const mapDispatchToProps = dispatch => ({
-  getVenues: (payload) => dispatch(getVenues(payload))
-})
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);;
+export default Search;
