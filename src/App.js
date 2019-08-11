@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchVenues } from './utils/actions/appActions';
 import Typography from '@material-ui/core/Typography';
 import Search from './components/Search';
+import Venues from './components/Venues';
 import {
   apiVersion as v,
   client_id,
@@ -28,14 +29,16 @@ class App extends Component {
   }
 
   render() {
+    const { venues = {} } = this.props;
     return (
       <div className="App">
        <header className="App-header">
        <Typography variant="h3" component="h3">Find my venue</Typography>
-       </header>
-       <Search
-        onSubmit={(location) => this.handleSubmit(location)}
-        />
+      </header>
+      <Search onSubmit={(location) => this.handleSubmit(location)}/>
+      { venues.length > 0 && (
+        <Venues venues={venues}/>
+      )}
       </div>
      );
   }
