@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-class Search extends Component {
+class SearchBox extends Component {
   constructor(props) {
     super(props);
     this.state = {location: ''};
@@ -37,4 +37,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default SearchBox;
