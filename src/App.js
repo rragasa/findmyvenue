@@ -8,6 +8,7 @@ import {
 import { fetchVenues } from './utils/actions/appActions';
 import Typography from '@material-ui/core/Typography';
 import VenueSearch from './pages/VenueSearch';
+import VenueDetails from './pages/VenueDetails';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path="/" exact component={VenueSearch} />
+          <Route path="/venue/:venueName" component={VenueDetails} />
         </Switch>
       </Router>
       </div>
@@ -26,7 +28,7 @@ class App extends Component {
   }
 }
 const mapStateToProps = ({
-  appReducer: {
+  application: {
     venues,
   },
  }) => ({
