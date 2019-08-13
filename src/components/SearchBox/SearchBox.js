@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+import { spacing } from '@material-ui/system';
 class SearchBox extends Component {
   constructor(props) {
     super(props);
@@ -22,17 +27,31 @@ class SearchBox extends Component {
   render() {
     const {location} = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <TextField
-          id="venueSearch"
-          label="Search for venues"
-          type="text"
-          margin="normal"
-          value={location}
-          onChange={e => this.handleChange(e)}
-        />
-        <Button variant="contained" onClick={this.handleSubmit}>Submit</Button>
+      <div className="component-container">
+        <header className="App-header">
+          <Typography
+            variant="h4"
+            component="h4" gutterBottom>Find my venue</Typography>
+        </header>
+        <form onSubmit={this.handleSubmit}>
+        <Paper>
+          <Box display="flex">
+            <InputBase
+              className="space-left"
+              placeholder="Explore venues..."
+              inputProps={{ 'aria-label': 'Explore venues' }}
+              value={location}
+              fullWidth
+              margin="dense"
+              onChange={e => this.handleChange(e)}
+            />
+            <IconButton onClick={this.handleSubmit} aria-label="search">
+              <SearchIcon />
+            </IconButton>
+          </Box>
+        </Paper>
       </form>
+      </div>
     );
   }
 }
