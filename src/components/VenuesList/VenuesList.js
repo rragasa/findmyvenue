@@ -1,6 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { array } from 'prop-types';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
 
 class VenuesList extends Component {
   constructor(props) {
@@ -23,26 +30,26 @@ class VenuesList extends Component {
       const { id, name } = item;
       const venueName = item.name.replace(/\W+(?!$)/g, '-');
       return (
-      <li
-        key={id}
-        data-id={id}
-        onClick={this.handleVenueSelected}
-        >
+
+        <List fullWidth>
+        <ListItem alignItems="flex-start">
           <Link
             key={id}
             to={`/venue/${venueName}`}
           >
             {name}
-          </Link>
-      </li>
+         </Link>
+        </ListItem>
+        </List>
       )}
     );
 
+
     return(
       <Fragment>
-        <ul>
+        <div className="component-container">
           {venueLinks}
-        </ul>
+        </div>
       </Fragment>
     );
   }
