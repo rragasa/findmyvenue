@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Typography from '@material-ui/core/Typography';
 
-const VenueDetails = ({match}) => {
+class VenueDetails extends Component {
 
-  return(
-    <div>ID: {match.params.venueName}</div>
-  );
+
+  render() {
+    const { match, venue } = this.props;
+    const { name } = venue;
+    return(
+      <div>ID: {match.params.venueName}
+
+      {/* <Typography
+              variant="h4"
+              component="h4" gutterBottom>{name}</Typography> */}
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = ({

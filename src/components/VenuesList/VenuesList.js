@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom';
 import { array } from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 
 class VenuesList extends Component {
   constructor(props) {
@@ -19,8 +14,6 @@ class VenuesList extends Component {
     const { selectVenue } = this.props;
     event.preventDefault();
     const hello = event.currentTarget.dataset["id"];
-    // this.setState({ selectedVenue: hello });
-    // console.log(this.state.selectedVenue)
     selectVenue(hello);
   }
 
@@ -30,17 +23,15 @@ class VenuesList extends Component {
       const { id, name } = item;
       const venueName = item.name.replace(/\W+(?!$)/g, '-');
       return (
-
-        <List fullWidth>
-        <ListItem alignItems="flex-start">
+        <ListItem alignItems="flex-start" key={id}>
           <Link
-            key={id}
             to={`/venue/${venueName}`}
+            data-id={id}
+            onClick={this.handleVenueSelected}
           >
             {name}
          </Link>
         </ListItem>
-        </List>
       )}
     );
 
@@ -48,7 +39,9 @@ class VenuesList extends Component {
     return(
       <Fragment>
         <div className="component-container">
+          <List fullwidth>
           {venueLinks}
+          </List>
         </div>
       </Fragment>
     );

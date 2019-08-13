@@ -5,7 +5,6 @@ import InputBase from '@material-ui/core/InputBase';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import { spacing } from '@material-ui/system';
 class SearchBox extends Component {
   constructor(props) {
     super(props);
