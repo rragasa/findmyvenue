@@ -1,20 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Typography from '@material-ui/core/Typography';
+import { fetchVenueDetails } from '../../utils/actions/appActions';
+import {
+  apiVersion as v,
+  client_id,
+  client_secret,
+} from '../../config.json';
 
 class VenueDetails extends Component {
+  componentDidMount() {
+    const {
+      match: {
+        params: {
+          id,
+        },
+      },
+      getVenueDetails,
+    } = this.props;
 
+    const payload = { v, client_id, client_secret };
+    getVenueDetails(id, payload);
+
+    }
 
   render() {
-    const { match, venue } = this.props;
-    const { name } = venue;
+    const { venue } = this.props;
     return(
-      <div>ID: {match.params.venueName}
-
-      {/* <Typography
-              variant="h4"
-              component="h4" gutterBottom>{name}</Typography> */}
-      </div>
+      <p>Hello</p>
     );
   }
 }
@@ -25,9 +37,13 @@ const mapStateToProps = ({
     venue,
   },
  }) => ({
-   venues,
-   venue,
+  venues,
+  venue,
 });
 
+const mapDispatchToProps = dispatch => ({
+  getVenueDetails: (id, payload) => dispatch(fetchVenueDetails(id, payload)),
+ })
 
-export default connect(mapStateToProps, null)(VenueDetails);
+
+export default connect(mapStateToProps, mapDispatchToProps)(VenueDetails);

@@ -1,22 +1,11 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import { array } from 'prop-types';
+import { Link } from 'react-router-dom';
+import Container from '@material-ui/core/Container';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
 class VenuesList extends Component {
-  constructor(props) {
-    super(props);
-    this.handleVenueSelected = this.handleVenueSelected.bind(this);
-  }
-
-  handleVenueSelected(event) {
-    const { selectVenue } = this.props;
-    event.preventDefault();
-    const hello = event.currentTarget.dataset["id"];
-    selectVenue(hello);
-  }
-
   render() {
     const { venues } = this.props;
     const venueLinks = venues.map((item) => {
@@ -25,9 +14,8 @@ class VenuesList extends Component {
       return (
         <ListItem alignItems="flex-start" key={id}>
           <Link
-            to={`/venue/${venueName}`}
+            to={`/venue/${id}/${venueName}`}
             data-id={id}
-            onClick={this.handleVenueSelected}
           >
             {name}
          </Link>
@@ -35,15 +23,12 @@ class VenuesList extends Component {
       )}
     );
 
-
     return(
-      <Fragment>
-        <div className="component-container">
-          <List fullwidth>
-          {venueLinks}
-          </List>
-        </div>
-      </Fragment>
+      <Container maxWidth="md">
+        <List fullwidth>
+        {venueLinks}
+        </List>
+      </Container>
     );
   }
 }

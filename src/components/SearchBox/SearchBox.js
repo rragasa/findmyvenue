@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { func } from 'prop-types';
+import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
@@ -26,7 +28,7 @@ class SearchBox extends Component {
   render() {
     const {location} = this.state;
     return (
-      <div className="component-container">
+      <Container maxWidth="md">
         <header className="App-header">
           <Typography
             variant="h4"
@@ -50,9 +52,13 @@ class SearchBox extends Component {
           </Box>
         </Paper>
       </form>
-      </div>
+      </Container>
     );
   }
+}
+
+SearchBox.propTypes = {
+  onSubmit: func.isRequired,
 }
 
 export default SearchBox;
