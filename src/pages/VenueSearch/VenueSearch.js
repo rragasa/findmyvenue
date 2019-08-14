@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { func } from 'prop-types';
+import { func, array } from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchVenues } from '../../utils/actions/appActions';
 import Container from '@material-ui/core/Container';
+import { fetchVenues } from '../../utils/actions/appActions';
 import SearchBox from '../../components/SearchBox';
 import VenuesList from '../../components/VenuesList';
 import {
   apiVersion as v,
-  client_id,
-  client_secret,
+  clientId,
+  clientSecret,
 } from '../../config.json';
 
 class VenueSearch extends Component {
@@ -21,18 +21,18 @@ class VenueSearch extends Component {
     const { getVenues } = this.props;
     const payload = {
       v,
-      client_id,
-      client_secret,
+      client_id: clientId,
+      client_secret: clientSecret,
       near: location,
     };
 
     getVenues(payload);
   }
 
-  render(){
-    const { venues = [] } = this.props;
+  render() {
+    const { venues } = this.props;
 
-    return(
+    return (
       <Container maxWidth="md" className="component-container">
         <SearchBox
           onSubmit={(location) => this.handleSubmit(location)}
@@ -45,6 +45,15 @@ class VenueSearch extends Component {
       </Container>
     );
   }
+}
+
+VenueSearch.defaultProps = {
+  venues: [],
+};
+
+VenueSearch.propTypes = {
+  getVenues: func.isRequired,
+  venues: array,
 };
 
 const mapStateToProps = ({
@@ -55,12 +64,8 @@ const mapStateToProps = ({
   venues,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   getVenues: (payload) => dispatch(fetchVenues(payload)),
- })
+});
 
- VenueSearch.propTypes = {
-  getVenues: func.isRequired,
- }
-
- export default connect(mapStateToProps, mapDispatchToProps)(VenueSearch);
+export default connect(mapStateToProps, mapDispatchToProps)(VenueSearch);

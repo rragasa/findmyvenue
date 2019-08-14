@@ -10,8 +10,8 @@ export default (state = {}, action) => {
     case VENUE_DETAILS_RECEIVED:
       return {
         ...state,
-        venue: action.venue
-      }
+        venue: action.venue,
+      };
     default:
       return state;
   }

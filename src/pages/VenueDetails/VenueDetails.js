@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { object } from 'prop-types';
+import { object, func } from 'prop-types';
 import { fetchVenueDetails } from '../../utils/actions/appActions';
 import {
   apiVersion as v,
-  client_id,
-  client_secret,
+  clientId,
+  clientSecret,
 } from '../../config.json';
 
 class VenueDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedVenueInformation: {},
-    };
     this.getSelectedVenue = this.getSelectedVenue.bind(this);
   }
+
   componentDidMount() {
     this.getSelectedVenue();
   }
@@ -30,13 +28,17 @@ class VenueDetails extends Component {
       getVenueDetails,
     } = this.props;
 
-    const payload = { v, client_id, client_secret };
+    const payload = {
+      v,
+      client_id: clientId,
+      client_secret: clientSecret,
+    };
     getVenueDetails(id, payload);
   }
 
   render() {
     const { venue } = this.props;
-    return(
+    return (
       <div>{venue.name}</div>
     );
   }
@@ -44,11 +46,13 @@ class VenueDetails extends Component {
 
 VenueDetails.defaultProps = {
   venue: {},
-}
+};
 
 VenueDetails.propTypes = {
-  venue: object.isRequired,
-}
+  venue: object,
+  getVenueDetails: func,
+  match: object,
+};
 
 const mapStateToProps = ({
   application: {
@@ -60,9 +64,8 @@ const mapStateToProps = ({
   venue,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   getVenueDetails: (id, payload) => dispatch(fetchVenueDetails(id, payload)),
- })
-
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(VenueDetails);
