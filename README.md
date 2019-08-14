@@ -1,8 +1,22 @@
+# Find my venue
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Running the project
 
-In the project directory, you can run:
+Clone this project
+
+```bash
+git clone git@github.com:rragasa/findmyvenue.git
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start local server at http://localhost:3000
 
 ### `npm start`
 
