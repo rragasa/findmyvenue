@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { object, func } from 'prop-types';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import { fetchVenueDetails } from '../../utils/actions/appActions';
+
 import {
   apiVersion as v,
   clientId,
@@ -39,7 +42,9 @@ class VenueDetails extends Component {
   render() {
     const { venue } = this.props;
     return (
-      <div>{venue.name}</div>
+      <Container maxWidth="md">
+        <Box>{venue.name}</Box>
+      </Container>
     );
   }
 }

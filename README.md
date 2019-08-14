@@ -2,8 +2,6 @@
 
 Find my venue helps you find venues.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Flow
 
 The user types in their desired location in the search box i.e. Portugal and a list
@@ -48,6 +46,10 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Structure
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). I have components which are used to create pages
 
 ## Resources
 
