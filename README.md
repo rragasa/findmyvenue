@@ -1,6 +1,14 @@
 # Find my venue
 
+Find my venue helps you find venues.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Flow
+
+The user types in their desired location in the search box i.e. Portugal and a list
+of venues near that location will be displayed. The user can then find out more
+information regarding the venue by click the link.
 
 ## Running the project
 
