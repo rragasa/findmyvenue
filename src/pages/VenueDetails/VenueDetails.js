@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { object } from 'prop-types';
 import { fetchVenueDetails } from '../../utils/actions/appActions';
 import {
   apiVersion as v,
@@ -8,7 +9,18 @@ import {
 } from '../../config.json';
 
 class VenueDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedVenueInformation: {},
+    };
+    this.getSelectedVenue = this.getSelectedVenue.bind(this);
+  }
   componentDidMount() {
+    this.getSelectedVenue();
+  }
+
+  getSelectedVenue() {
     const {
       match: {
         params: {
@@ -20,15 +32,22 @@ class VenueDetails extends Component {
 
     const payload = { v, client_id, client_secret };
     getVenueDetails(id, payload);
-
-    }
+  }
 
   render() {
     const { venue } = this.props;
     return(
-      <p>Hello</p>
+      <div>{venue.name}</div>
     );
   }
+}
+
+VenueDetails.defaultProps = {
+  venue: {},
+}
+
+VenueDetails.propTypes = {
+  venue: object.isRequired,
 }
 
 const mapStateToProps = ({
@@ -36,7 +55,7 @@ const mapStateToProps = ({
     venues,
     venue,
   },
- }) => ({
+}) => ({
   venues,
   venue,
 });
