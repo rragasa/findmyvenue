@@ -49,7 +49,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Structure
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). I have components which are used to create pages
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). I have components which are used to create pages and redux to store
+the information that is retrieved from the APIs.
 
 ## Resources
 
